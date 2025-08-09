@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExpressPost Tracking</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: linear-gradient(90deg, #ffcc00, #000);
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .tracking-form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 1.5rem;
+    }
+    .tracking-form input {
+        flex: 1;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+    .tracking-form button {
+        padding: 0.8rem 1.2rem;
+        border: none;
+        background: #ffcc00;
+        color: black;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .tracking-form button:hover {
+        background: #e6b800;
+    }
+    .tracking-details {
+        border-top: 2px solid #eee;
+        padding-top: 1rem;
+    }
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .highlight {
+        color: #ff9900;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<header>ExpressPost Worldwide Tracking</header>
+
+<div class="container">
+    <form class="tracking-form" onsubmit="trackPackage(event)">
+        <input type="text" id="trackingInput" placeholder="Enter Tracking ID (e.g., EXP-1995-TX-HN79)">
+        <button type="submit">Track</button>
+    </form>
+
+    <div id="trackingResult">
+        <p>Enter your tracking ID above to see details.</p>
+    </div>
+</div>
+
+<script>
+function trackPackage(event) {
+    event.preventDefault();
+    const trackingId = document.getElementById('trackingInput').value.trim();
+    const resultDiv = document.getElementById('trackingResult');
+
+    if (trackingId.toUpperCase() === "EXP-1995-TX-HN79") {
+        resultDiv.innerHTML = `
+            <div class="tracking-details">
+                <h3>Tracking Details</h3>
+                <div class="detail-row"><strong>Recipient:</strong> <span>Stanley Peter</span></div>
+                <div class="detail-row"><strong>Address:</strong> <span>Texas, USA</span></div>
+                <div class="detail-row"><strong>Sender:</strong> <span>Tony Ever</span></div>
+                <div class="detail-row"><strong>Delivery Item:</strong> <span>Mercedes Benz C300 2012 (Black)</span></div>
+                <div class="detail-row"><strong>VIN:</strong> <span>4JGFB6BB5PA867769</span></div>
+                <div class="detail-row"><strong>Location:</strong> <span>USA - Customs Clearance</span></div>
+                <div class="detail-row"><strong>Custom Fee:</strong> <span class="highlight">Pending Payment</span></div>
+                <div class="detail-row"><strong>Expected Delivery:</strong> <span class="highlight">15th (Today)</span></div>
+            </div>
+        `;
+    } else {
+        resultDiv.innerHTML = `<p style="color:red;">Tracking ID not found. Please check and try again.</p>`;
+    }
+}
+</script>
+
+</body>
+</html>
+
+add tracking site 
+---
